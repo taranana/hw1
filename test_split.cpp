@@ -10,8 +10,27 @@ g++ split.cpp test_split.cpp -o test_split
 */
 
 #include "split.h"
+#include <iostream>
+
+using namespace std;
 
 int main(int argc, char* argv[])
 {
+  Node* in = nullptr;
+  for (int i = 10; i >= 1; --i) {
+    in = new Node(i,in);
+  }
+  Node* odd = nullptr;
+  Node* even = nullptr;
+  split(in,odd,even);
 
+  cout << "odds ";
+  for(Node* print = odd; print != nullptr; print = print->next){
+    cout << print->value << " ";
+  }
+
+  cout << "evens ";
+  for(Node* print = even; print != nullptr; print = print->next){
+    cout << print->value << " ";
+  }
 }
